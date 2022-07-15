@@ -19,17 +19,22 @@
           <h1>Todo App</h1>
         </div>
         <!-- ADD TODO BAR -->
-        <form class="todo-list__input">
-          <input type="text" placeholder="Add your new todo" name="new-todo" />
-          <button class="btn btn--add">Add</button>
+        <form class="todo-list__input" data-form>
+          <input
+            type="text"
+            placeholder="Add your new todo"
+            name="new-todo"
+            data-formInput
+          />
+          <button class="btn btn--add" data-addBtn>Add</button>
         </form>
         <!-- LIST OF TODO'S -->
         <div class="todo-list__list">
-          <ul>
+          <ul data-list>
             <!-- TODO: Comment with selector after styling -->
-            <!-- <li>
+            <!-- <li data-listItem>
               Prepare shopping list
-              <button class="btn btn--delete">X</button>
+              <button data-deleteBtn class="btn btn--delete">X</button>
             </li> -->
           </ul>
         </div>
