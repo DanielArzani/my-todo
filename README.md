@@ -6,6 +6,8 @@ This is my daily todo list since I like to write a lot but its not always so eas
 
 This is a rough version of it with minimal styling and features just to get it working and usable today
 
+It was designed desktop first since I want to use it on my computer
+
 ## Technologies used
 
 - HTML
