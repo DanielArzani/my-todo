@@ -60,6 +60,7 @@ main {
 /* Main Container */
 .todo-list {
   /* FIXME: Change from border to box shadow */
+  /* FIXME: Think of what to do for long todo's */
   border: 1px solid;
   min-height: 400px;
   min-width: 400px;

@@ -2,6 +2,10 @@
 
 This is my daily todo list since I like to write a lot but its not always so easy to read through everything I write (_especially since some things don't pertain to today_)
 
+## Hosted URL
+
+You can either download the repo and use it yourself or just use this [live](https://danielarzani.github.io/my-todo/) Version
+
 ## Current Status
 
 This is a rough version of it with minimal styling and features just to get it working and usable today
