@@ -1,21 +1,5 @@
-// TODO: Use JsDoc for functions
 // TODO: Create guards and input validation
-// TODO: Re-factor code (especially re-used code)
 // TODO: Add drag and drop capabilities
-// TODO: Host it and turn it into Chrome's homepage (since the url bar also works as a search bar, its okay to give up the one in the middle of the page)
-
-// SUDO CODE
-
-// High Level
-// 1) When something is typed in the input and either enter is pressed or button is clicked, save data somewhere ✅
-// 2) When user inputs text, create a new todo ✅
-// 3) When delete button is pressed, get rid of todo ✅
-// 4) Save todo's ✅
-
-// Low Level
-// 1) Create event listener for form element and create a singleton that will hold the user inputs
-// 2) Create new list item (and delete btn) on event and give it the value of the user input
-// 3) Listen for click event on delete button, delete todo and remove it from localStorage
 
 // GLOBAL VARIABLES
 const form = document.querySelector('[data-form]');
@@ -24,6 +8,7 @@ const addBtn = document.querySelector('[data-addBtn]');
 const list = document.querySelector('[data-list]');
 
 let tempStorageList = [];
+// localStorage will be what ever tempStorage holds and at load time, tempStorage will be what ever value is stored in localStorage as long as the listItem key exists
 if (localStorage.listItem == null) {
   localStorage.listItem = tempStorageList;
 } else {
@@ -31,6 +16,22 @@ if (localStorage.listItem == null) {
 }
 
 // FUNCTIONS
+/**
+ * @param  {String} input
+ */
+function handleElementCreation(input) {
+  const li = document.createElement('li');
+  li.dataset.listItem = input;
+  li.textContent = input;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.dataset.deleteBtn = 'delete';
+  deleteBtn.classList.add('btn', 'btn--delete');
+  deleteBtn.textContent = 'X';
+
+  li.append(deleteBtn);
+  list.append(li);
+}
 
 /**
  * @param  {Event} e
@@ -43,17 +44,7 @@ function createTodo(e) {
   localStorage.setItem('listItem', JSON.stringify(tempStorageList));
 
   // create new todo
-  const li = document.createElement('li');
-  li.dataset.listItem = input.value;
-  li.textContent = input.value;
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.dataset.deleteBtn = 'delete';
-  deleteBtn.classList.add('btn', 'btn--delete');
-  deleteBtn.textContent = 'X';
-
-  li.append(deleteBtn);
-  list.append(li);
+  handleElementCreation(input.value);
 
   // clear input field
   input.value = '';
@@ -81,18 +72,9 @@ window.addEventListener('DOMContentLoaded', () => {
     storedListItems = JSON.parse(localStorage.listItem);
   }
 
+  // add saved todo's on page load
   for (const listItem of storedListItems) {
-    const li = document.createElement('li');
-    li.dataset.listItem = listItem;
-    li.textContent = listItem;
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.dataset.deleteBtn = 'delete';
-    deleteBtn.classList.add('btn', 'btn--delete');
-    deleteBtn.textContent = 'X';
-
-    li.append(deleteBtn);
-    list.append(li);
+    handleElementCreation(listItem);
   }
 });
 
